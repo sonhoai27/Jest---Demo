@@ -1,0 +1,64 @@
+Jest là 1 FW testing.
+Đơn giản dễ sử dụng.
+Dễ dùng chung vs các package khác.
+Có snapshop để lưu lại, và so sánh. (so sánh 2 component 2 2 thời điểm khác nhau khi render ra có # không)
+
+### các tính năng:
+1:  matcher: kiểm tra có bằng như cái mong đợi.
+ví dụ: 2 + 3 toEqual(5) không. có là toBe(5)
+
+2: tính đúng đắn, thường cho null, undefined, bool
+
+toBeNull()....
+
+3: number: >, >=, <= , <
+4: string. toMatch
+5: array: toContain()
+6: callback
+
+=> xác định các trường hợp thử nghiệm test
+
+Repeating Setup For Many Tests
+Khi test bạn cần 1 số thứ trước khi test, và cần phải làm 1 số thức sau khi test xong.
+Lặp các lần thực hiện:
+Duoc goi truoc moi lan thuc hien beforeEach(), sau moi lan afterEach()
+
+
+One-Time Setup
+
+Snapshot:
+Property Matchers: trong 1 số trường hợp như uuid, hay new Date();
+it('will check the matchers and pass', () => {
+  const user = {
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    name: 'LeBron James',
+  };
+
+  expect(user).toMatchSnapshot({
+    createdAt: expect.any(Date),
+    id: expect.any(Number),
+  });
+});
+
+// Snapshot
+exports[`will check the matchers and pass 1`] = `
+Object {
+  "createdAt": Any<Date>,
+  "id": Any<Number>,
+  "name": "LeBron James",
+}
+`;
+
+DOM testing
+
+
+enzyme giúp test react component
+Mount: Full DOM rendering including child components, cho 1 số trường hợp cần tương tác với DOM, dùng vòng đời...
+cho phép truy cập cả 2 props từ root component, default props, props passed into child component
+Shallow: chỉ render ở single component, ko gồm child component.
+Tốt cho việc cô lập 1 component, và test, tìm bug nhanh cóng. thay đổi, bug. Bảo về những thay đổi, bug từ child component ảnh hưởng tới component đang test.
+Render
+
+
+
